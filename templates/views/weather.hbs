@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {{>link}}
+</head>
+<body>
+
+    {{>navbar}}
+    <div class="container">
+        <div class="main_content">
+        <form action="#" class="temp_form">
+            <input type="text" id="cityName" placeholder="Enter your city name" autocomplete="true">
+            <input type="button" value="search" id="submitBtn">
+        </form>
+    </div>
+    <div class="box">
+        <div class="tempInformation">
+            <div class="top_layer">
+                <p id="day">Monday</p><p id="today_date">13 Oct</p>
+            </div>
+            <div class="main_layer">
+                <p id="city_name">Get Output Here</p>
+                <div class="middle_layer data_hide">
+                    <p ><span id="temp">0</span><sup>0</sup>C</p>
+                    <p id="temp_status"></p>
+                </div>
+            </div>
+         </div>
+    </div>
+    </div>
+{{>footer}}
+ <script>
+const submitBtn=document.getElementById('submitBtn');
+const cityName=document.getElementById('cityName');
+const cityname=document.getElementById('city_name');
+const temp_status=document.getElementById('temp_status');
+const temp=document.getElementById('temp');
+const day=document.getElementById('day');
+const today_date=document.getElementById('today_date');
+
+const date=new Date();
+const arr=["Sunday","Monday","Tuesday","Wednes day","Thirsday","Friday","Suterday"];
+day.innerText=arr[date.getDay()];
+let s=date.toDateString();
+while(s!=="" && s[0]!=' '){
+s=s.substr(1);
+}
+today_date.innerText=s;
+console.log(s);
+const getInfo=async(event)=>{
+    event.preventDefault();
+    let cityval=cityName.value;
+   // alert(cityval);
+    if(cityval===""){
+city_name.innerText="Please write the name before search!!!";
+    }
+    else{
+        try{
+    let url=`https://api.openweathermap.org/data/2.5/weather?q=${cityval}&appid=4f04be918b7ff3c7fb023a57aeaa6ecd`;
+    const responce =await fetch(url);
+    const data = await responce.json();
+    const arrData=[data];
+    cityname.innerText=`${arrData[0].name},${arrData[0].sys.country}`;
+    let temp1=parseFloat(arrData[0].main.temp);
+    temp1=temp1-273;
+    temp1=Math.round(temp1 * 100) / 100;
+    temp.innerHTML=temp1;
+    const temp_mod=arrData[0].weather[0].main;
+    if(temp_mod=="Clear"){
+        console.log("clear");
+        temp_status.innerHTML="<i class='fas fa-sun' style='color:#eccc68;'></i>";
+    }else if(temp_mod=="Clouds"){
+        temp_status.innerHTML="<i class='fas fa-cloud' style='color:##f1f2f6;'></i>";
+    }else if(temp_mod=="Rain"){
+        temp_status.innerHTML="<i class='fas fa-cloud-rain' style='color:#a4b0be;'></i>";
+    }else{
+        console.log("else part");
+        temp_status.innerHTML="<i class='fas fa-cloud' style='color:#f1f2f6;'></i>";
+    }  
+        }catch{
+            city_name.innerText="Please enter city name properly!!!";
+        }
+    }
+}
+submitBtn.addEventListener('click',getInfo);
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {{>link}}
+</head>
+<body>
+    {{>navbar}}
+    <div class="main-container">
+        <div class="left-container">
+            <h2>Welcome to weather app</h2>
+            <h1>Get The Latest <a href="">Weather</a> Info of Your City</h1>
+           <span ><a href="./weather">Check Now !!!</a> </span>
+        </div>
+        <div class="right-container">
+             <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="2000">
+            <img src="./img/img1.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5 class="text-white">four direction</h5>
+              <p class="text-white"> North, South, East, and West. We are going in the fifth direction, which is the direction of stories. — Sean Taylor.</p>
+            </div>
+          </div>
+          <div class="carousel-item" data-bs-interval="2000">
+            <img src="./img/img4.jpg" class="d-block w-100 h-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5 class="text-white">Rainy Day</h5>
+              <p class="text-white">The Sun after the rain is much beautiful than the Sun before the rain! ...</p>
+            </div>
+          </div>
+          <div class="carousel-item" data-bs-interval="2000">
+            <img src="./img/img3.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5 class="text-white">Sunny day</h5>
+              <p  class="text-white">Sunny days give us happiness; stormy days give us wisdom.</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    
+        </div>
+    </div>
+
+{{>footer}}
+
+</body>
+</html>
